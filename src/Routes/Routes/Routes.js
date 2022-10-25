@@ -14,11 +14,13 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('https://edu-care-learning-server.vercel.app/allcourses')
             },
             {
                 path: '/course',
-                element: <Course></Course>
+                element: <Course></Course>,
+                // loader: () => fetch('https://edu-care-learning-server.vercel.app/allcourses')
             },
             {
                 path: '/blog',
@@ -28,6 +30,11 @@ export const routes = createBrowserRouter([
                 path: '/faq',
                 element: <FAQ></FAQ>
             },
+            // {
+            //     path: '/',
+            //     element: <AllCourses></AllCourses>,
+            //     loader: () => fetch('https://edu-care-learning-server.vercel.app/allcourses')
+            // },
             {
                 path: '/login',
                 element: <Login></Login>
