@@ -6,6 +6,8 @@ import FAQ from "../../pages/FAQ/FAQ";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
+import PageNotFound from "../../pages/Shared/PageNotFound/PageNotFound";
+
 
 export const routes = createBrowserRouter([
     {
@@ -20,7 +22,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/course',
                 element: <Course></Course>,
-                // loader: () => fetch('https://edu-care-learning-server.vercel.app/allcourses')
+                loader: () => fetch('https://edu-care-learning-server.vercel.app/allcourses')
             },
             {
                 path: '/blog',
@@ -30,11 +32,6 @@ export const routes = createBrowserRouter([
                 path: '/faq',
                 element: <FAQ></FAQ>
             },
-            // {
-            //     path: '/',
-            //     element: <AllCourses></AllCourses>,
-            //     loader: () => fetch('https://edu-care-learning-server.vercel.app/allcourses')
-            // },
             {
                 path: '/login',
                 element: <Login></Login>
@@ -44,5 +41,9 @@ export const routes = createBrowserRouter([
                 element: <Register></Register>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <PageNotFound />
     }
 ])
