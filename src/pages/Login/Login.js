@@ -12,7 +12,7 @@ const Login = () => {
     const { providerLogin, handleSignInwithEmail } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
-    const [error, seterror] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -20,24 +20,25 @@ const Login = () => {
     const handleGoogleLogin = () => {
         providerLogin(googleProvider)
             .then(result => {
-                const user = result.user;
-                console.log(user);
                 toast.success('Successfully Log in')
                 navigate(from, { replace: true });
+                setError('');
             })
             .catch(error => {
-                seterror(error.message);
+                console.log(error);
+                setError(error.message);
             })
     }
 
     const handleGitHubLogIn = () => {
         providerLogin(gitHubProvider)
             .then(result => {
+                setError('');
                 toast.success('Successfully Log in')
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                seterror(error.message);
+                setError(error.message);
             })
     }
 
@@ -53,11 +54,14 @@ const Login = () => {
                 toast.success('Successfully Log in')
                 navigate(from, { replace: true });
                 form.reset()
+                setError('');
             })
             .catch(error => {
-                seterror(error.message);
+                setError(error.message);
             })
     }
+
+
 
     return (
         <div>
@@ -66,8 +70,8 @@ const Login = () => {
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Login now!</h1>
                     </div>
-                    <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
-                        <div className="card-body">
+                    <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+                        <form onSubmit={handleSubmit} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl font-semibold">Email</span>
@@ -79,18 +83,20 @@ const Login = () => {
                                     <span className="label-text text-xl font-semibold">Password</span>
                                 </label>
                                 <input type="text" name='password' placeholder="password" className="input input-bordered mb-3" />
+
                                 <p className='text-red-700 font-semibold'>{error}</p>
+
                                 <label className="mt-5 flex flex-col text-left">
-                                    <Link to="/register" className="label-text-alt text-sm font-medium link link-hover">Don not Have an Account?</Link>
+                                    <Link to="/register" className="label-text-alt text-blue-900 underline text-base font-medium link link-hover">Don not Have an Account? <span className='text-sm'>Register Here</span></Link>
                                 </label>
                             </div>
-                            <div className="form-control gap-4 mt-6">
-                                <button className="btn btn-primary">Login</button>
-                                <button onClick={handleGoogleLogin} className="btn btn-outline"><FcGoogle className='text-3xl mr-4' />Login with Google</button>
-                                <button onClick={handleGitHubLogIn} className="btn btn-outline"><FaGithub className='text-3xl mr-4' />Login with Git Hub</button>
-                            </div>
+                            <button className="btn btn-primary">Login</button>
+                        </form>
+                        <div className="form-control px-8 gap-3 mb-5">
+                            <button onClick={handleGoogleLogin} className="btn btn-outline"><FcGoogle className='text-3xl mr-4' />Login with Google</button>
+                            <button onClick={handleGitHubLogIn} className="btn btn-outline"><FaGithub className='text-3xl mr-4' />Login with Git Hub</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

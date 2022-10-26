@@ -14,7 +14,7 @@ const Home = () => {
     return (
         <div>
             <h1 className='text-3xl text-info font-semibold mb-9'>All Category base Courses</h1>
-            <div className='grid grid-cols-3 gap-10'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
                 {
                     courses.push.map(course => <SingleCourse
                         key={course._id}

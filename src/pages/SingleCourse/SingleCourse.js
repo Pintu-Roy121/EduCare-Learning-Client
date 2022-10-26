@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const SingleCourse = ({ course }) => {
     const { _id, title, image_url } = course;
     return (
-        <div className="card card-compact h-96 bg-base-100 shadow-xl relative">
+        <div className="card card-compact w-4/5 md:w-full mx-auto h-96 bg-base-100 shadow-xl relative">
             <figure><img className='h-48 w-full' src={image_url} alt="" /></figure>
             <div className="card-body items-center">
                 <h2 className="card-title">{title}</h2>
