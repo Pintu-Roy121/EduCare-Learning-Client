@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Edu-Care-Learning Assignment-10
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+# https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-Pintu-Roy121
+
+[Client Side Private Repogitory](https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-Pintu-Roy121).
 
 ## Available Scripts
 

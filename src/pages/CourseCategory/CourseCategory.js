@@ -13,7 +13,8 @@ const CourseCategory = ({ category }) => {
                             <p className='text-3xl font-semibold'>{name}</p>
                         </div>
                     </div>
-                </div></Link>
+                </div>
+            </Link>
         </div>
     );
 };

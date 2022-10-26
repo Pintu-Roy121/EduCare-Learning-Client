@@ -3,7 +3,7 @@ import React from 'react';
 const Blog = () => {
     return (
         <div>
-            <div className='w-full mx-auto my-20 flex flex-col gap-10'>
+            <div className='w-4/5 mx-auto my-20 flex flex-col gap-10'>
                 <div className='text-center bg-slate-300 rounded-lg shadow-md shadow-cyan-600 '>
                     <h1 className='text-2xl md:text-4xl font-bold text-black rounded-top-lg shadow-md shadow-cyan-600 py-3'>what is cors?</h1>
                     <p className='text-base md:text-lg font-medium text-justify text-black w-4/5 mx-auto pb-8 mt-5'>CORS is a node. js package for providing a Connect/Express middleware that can be used to enable CORS with various options.CORS is a mechanism implemented by browsers to block requests from domains other than the server's one. When a browser makes a request, it adds an origin header to the request message. If it goes to the server of the exact origin, it is allowed by the browser, and if it does not, the browser blocks it. </p>

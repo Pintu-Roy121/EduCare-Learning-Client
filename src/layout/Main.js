@@ -10,7 +10,7 @@ const Main = () => {
         <div>
             <Navbar></Navbar>
             <Header></Header>
-            <div className='flex flex-col md:flex-row gap-10 m-10'>
+            <div className='flex flex-col lg:flex-row gap-10 m-10'>
                 <div className='grid col-span-4'>
                     <Categories></Categories>
                 </div>
