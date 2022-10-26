@@ -10,7 +10,7 @@ const SingleCategory = ({ category }) => {
             <figure><img className='h-48 w-full' src={image_url} alt="" /></figure>
             <div className="card-body items-center">
                 <h2 className="card-title">{title}</h2>
-                <Link to={`/course/${_id}`} className=' absolute bottom-2 '><button className="btn btn-primary">
+                <Link to={`/coursedetails/${_id}`} className=' absolute bottom-2 '><button className="btn btn-primary">
                     View Course Details <FaArrowRight className='text-lg ml-5' /> </button></Link>
             </div>
         </div>

@@ -9,6 +9,7 @@ import Register from "../../pages/Register/Register";
 import PageNotFound from "../../pages/Shared/PageNotFound/PageNotFound";
 import Course from '../../pages/Course/Course'
 import Courses from "../../pages/Courses/Courses";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 
 export const routes = createBrowserRouter([
@@ -27,8 +28,8 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://edu-care-learning-server.vercel.app/courses/${params.id}`)
             },
             {
-                path: '/course/:id',
-                element: <Course></Course>,
+                path: '/coursedetails/:id',
+                element: <PrivateRoutes><Course></Course></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://edu-care-learning-server.vercel.app/course/${params.id}`)
             },
             {
