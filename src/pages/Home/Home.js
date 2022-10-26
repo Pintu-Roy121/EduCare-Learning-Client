@@ -5,7 +5,6 @@ import SingleCourse from '../SingleCourse/SingleCourse';
 
 const Home = () => {
     const allCourses = useLoaderData();
-    console.log(allCourses);
 
     const courses = []
     if (allCourses.length > 6) {
@@ -18,12 +17,12 @@ const Home = () => {
             <div className='grid grid-cols-3 gap-10'>
                 {
                     courses.push.map(course => <SingleCourse
-                        key={course.id}
+                        key={course._id}
                         course={course}
                     />)
                 }
             </div>
-            <Link to='/courses'><button className="btn btn-success mt-12">View All <FaArrowRight className='text-lg ml-5' /></button></Link>
+            <Link to='/courses'><button className="btn btn-success mt-12">View All Category <FaArrowRight className='text-lg ml-5' /></button></Link>
         </div>
     );
 };

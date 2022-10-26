@@ -27,10 +27,6 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://edu-care-learning-server.vercel.app/courses/${params.id}`)
             },
             {
-                path: '/blog',
-                element: <Blog></Blog>
-            },
-            {
                 path: '/course/:id',
                 element: <Course></Course>,
                 loader: ({ params }) => fetch(`https://edu-care-learning-server.vercel.app/course/${params.id}`)
@@ -39,6 +35,10 @@ export const routes = createBrowserRouter([
                 path: '/courses',
                 element: <Courses></Courses>,
                 loader: () => fetch('https://edu-care-learning-server.vercel.app/allcategory')
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
                 path: '/faq',

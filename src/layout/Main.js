@@ -14,7 +14,7 @@ const Main = () => {
                 <div className='grid col-span-4'>
                     <Categories></Categories>
                 </div>
-                <div className='grid col-span-8'>
+                <div className='grid col-span-8 w-full'>
                     <Outlet></Outlet>
                 </div>
             </div>

@@ -1,30 +1,49 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import { useState } from 'react';
 
 const Register = () => {
-    const { createUserWithEamil, handleUpdateProfile } = useContext(AuthContext)
+    const { createUserWithEamil, handleUpdateProfile } = useContext(AuthContext);
+    const [error, setError] = useState('')
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPassworError] = useState('')
+    const navigate = useNavigate();
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         const name = form.name.value;
         const photourl = form.photourl.value;
 
+        if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            setEmailError('Please Enter valid Email..');
+            return;
+        } else {
+            setEmailError('')
+        }
+        if (password.length < 6) {
+            setPassworError("Please Enter at least 6 characters ");
+            return;
+        } else {
+            setPassworError('')
+        }
+
         createUserWithEamil(email, password)
             .then(result => {
-                const user = result.user;
                 form.reset();
                 UserUpdateProfile(name, photourl);
                 toast.success('Successfully Log in')
-                console.log(user);
+                navigate('/');
             })
             .catch(error => {
-                console.log(error);
+                setError(error.message);
             })
     }
 
@@ -66,14 +85,16 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text text-xl font-semibold">Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                                <input type="email" name='email' placeholder="email" className="input input-bordered mb-3" required />
+                                <p className='text-red-700 font-semibold'>{emailError}</p>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl font-semibold">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-
+                                <input type="password" name='password' placeholder="password" className="input input-bordered mb-3" required />
+                                <p className='text-red-700 font-semibold'>{passwordError}</p>
+                                <p className='text-red-700 font-semibold'>{error}</p>
                                 <div className="mt-5 flex flex-col text-left">
                                     <p className="text-sm font-medium link-hover">Already Have an Account?<Link to="/login" >Login</Link></p>
                                 </div>

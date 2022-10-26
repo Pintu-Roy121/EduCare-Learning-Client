@@ -1,17 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { useState } from 'react';
 
 const Login = () => {
     const { providerLogin, handleSignInwithEmail } = useContext(AuthContext);
-
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
+    const [error, seterror] = useState('');
+    const navigate = useNavigate();
 
     const handleGoogleLogin = () => {
         providerLogin(googleProvider)
@@ -19,9 +21,10 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('Successfully Log in')
+                navigate('/')
             })
             .catch(error => {
-                console.log(error);
+                seterror(error.message);
             })
     }
 
@@ -29,9 +32,10 @@ const Login = () => {
         providerLogin(gitHubProvider)
             .then(result => {
                 toast.success('Successfully Log in')
+                navigate('/')
             })
             .catch(error => {
-                console.log(error);
+                seterror(error.message);
             })
     }
 
@@ -44,13 +48,12 @@ const Login = () => {
 
         handleSignInwithEmail(email, password)
             .then(result => {
-                const user = result.user;
                 toast.success('Successfully Log in')
-                console.log(user);
+                navigate('/');
                 form.reset()
             })
             .catch(error => {
-                console.log(error);
+                seterror(error.message);
             })
     }
 
@@ -73,7 +76,8 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text text-xl font-semibold">Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                                <input type="text" name='password' placeholder="password" className="input input-bordered mb-3" />
+                                <p className='text-red-700 font-semibold'>{error}</p>
                                 <label className="mt-5 flex flex-col text-left">
                                     <Link to="/register" className="label-text-alt text-sm font-medium link link-hover">Don not Have an Account?</Link>
                                 </label>
