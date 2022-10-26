@@ -2,9 +2,9 @@
 
 **Assignment-10 Live Site Link is Here:**
 
-## https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-Pintu-Roy121
+## https://edu-care-learning.web.app/
 
-## Live Site Link: https://quize-hunter-9b2130.netlify.app
+## Live Site Link: https://edu-care-learning.web.app/
 
 ## Used Features for this Project are:
 
