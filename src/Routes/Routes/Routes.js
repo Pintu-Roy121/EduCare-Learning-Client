@@ -1,12 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import Blog from "../../pages/Blog/Blog";
-import Course from "../../pages/Course/Course";
+import Category from "../../pages/Category/Category";
 import FAQ from "../../pages/FAQ/FAQ";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import PageNotFound from "../../pages/Shared/PageNotFound/PageNotFound";
+import Course from '../../pages/Course/Course'
+import Courses from "../../pages/Courses/Courses";
 
 
 export const routes = createBrowserRouter([
@@ -20,13 +22,23 @@ export const routes = createBrowserRouter([
                 loader: () => fetch('https://edu-care-learning-server.vercel.app/allcourses')
             },
             {
-                path: '/course',
-                element: <Course></Course>,
-                loader: () => fetch('https://edu-care-learning-server.vercel.app/allcourses')
+                path: '/category/:id',
+                element: <Category></Category>,
+                loader: ({ params }) => fetch(`https://edu-care-learning-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/course/:id',
+                element: <Course></Course>,
+                loader: ({ params }) => fetch(`https://edu-care-learning-server.vercel.app/course/${params.id}`)
+            },
+            {
+                path: '/courses',
+                element: <Courses></Courses>,
+                loader: () => fetch('https://edu-care-learning-server.vercel.app/allcategory')
             },
             {
                 path: '/faq',

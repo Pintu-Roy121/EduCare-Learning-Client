@@ -11,7 +11,7 @@ const AllCourses = () => {
     }
 
     return (
-        <div className='py-20 w-5/6 mx-auto'>
+        <div className='py-20 w-5/6 mx-auto text-center'>
             <h1 className='text-5xl text-sky-500 text-shadow-lg font-semibold mb-8'>All Popular Courses</h1>
             <div className=' grid grid-cols-1 md:grid-cols-3 gap-5 '>
                 {

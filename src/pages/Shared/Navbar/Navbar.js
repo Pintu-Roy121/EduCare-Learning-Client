@@ -26,7 +26,7 @@ const Navbar = () => {
                     </div>
                     <div className='flex gap-3 md:gap-7 items-center text-base md:text-xl font-semibold'>
                         <Link className='hover:text-red-500 hover:underline focus:underline duration-300 ' to='/'>Home</Link>
-                        <Link className='hover:text-red-500 hover:underline focus:underline duration-300 ' to='/course'>Course</Link>
+                        <Link className='hover:text-red-500 hover:underline focus:underline duration-300 ' to='/courses'>Courses</Link>
                         <Link className='hover:text-red-500 hover:underline focus:underline duration-300 ' to='/blog'>Blog</Link>
                         <Link className='hover:text-red-500 hover:underline focus:underline duration-300 ' to='/faq'>FAQ</Link>
                         {

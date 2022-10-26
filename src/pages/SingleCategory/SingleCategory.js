@@ -1,17 +1,19 @@
 import React from 'react';
+import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const SingleCategory = ({ category }) => {
-    const { name, course_img } = category;
+    const { title, image_url, _id } = category;
+
     return (
-        <Link to='/course' className="card bg-base-100 shadow-xl image-full h-56 cursor-pointer">
-            <figure><img src={course_img} alt="Shoes" /></figure>
-            <div className="card-body px-12">
-                <div className="card-actions justify-center items-center mt-24">
-                    <h1 className='text-3xl font-medium'>{name}</h1>
-                </div>
+        <div className="card card-compact h-96 bg-base-100 shadow-xl relative">
+            <figure><img className='h-48 w-full' src={image_url} alt="" /></figure>
+            <div className="card-body items-center">
+                <h2 className="card-title">{title}</h2>
+                <Link to={`/course/${_id}`} className=' absolute bottom-2 '><button className="btn btn-primary">
+                    View Course Details <FaArrowRight className='text-lg ml-5' /> </button></Link>
             </div>
-        </Link>
+        </div>
     );
 };
 

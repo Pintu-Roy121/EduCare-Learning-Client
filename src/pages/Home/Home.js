@@ -1,17 +1,29 @@
 import React from 'react';
-import AllCategory from '../AllCategory/AllCategory';
-import AllCourses from '../AllCourses/AllCourses';
-import Design from '../Design/Design';
-import Header from '../Header/Header';
+import { Link, useLoaderData } from 'react-router-dom';
+import { FaArrowRight } from "react-icons/fa";
+import SingleCourse from '../SingleCourse/SingleCourse';
 
 const Home = () => {
+    const allCourses = useLoaderData();
+    console.log(allCourses);
+
+    const courses = []
+    if (allCourses.length > 6) {
+        courses.push = allCourses.slice(0, 6);
+    }
 
     return (
         <div>
-            <Header></Header>
-            <AllCategory></AllCategory>
-            <Design></Design>
-            <AllCourses></AllCourses>
+            <h1 className='text-3xl text-info font-semibold mb-9'>All Category base Courses</h1>
+            <div className='grid grid-cols-3 gap-10'>
+                {
+                    courses.push.map(course => <SingleCourse
+                        key={course.id}
+                        course={course}
+                    />)
+                }
+            </div>
+            <Link to='/courses'><button className="btn btn-success mt-12">View All <FaArrowRight className='text-lg ml-5' /></button></Link>
         </div>
     );
 };
