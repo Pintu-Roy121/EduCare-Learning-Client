@@ -9,7 +9,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useState } from 'react';
 
 const Login = () => {
-    const { user, providerLogin, handleSignInwithEmail, resetPasswore } = useContext(AuthContext);
+    const { providerLogin, handleSignInwithEmail, resetPasswore } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
     const [error, setError] = useState('');
