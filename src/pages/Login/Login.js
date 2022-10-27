@@ -83,7 +83,7 @@ const Login = () => {
         }
         else {
             resetPasswore(userEmail);
-            toast.success('Varification Email Send');
+            toast.success('Varification Email Sent');
         }
     }
 
