@@ -12,6 +12,7 @@
 - Used Firebase to implement Authentication system
 - Used useContext() 
 - Also Used react-to-pdf but not perfect. 
+- Used Tailwind , daisyUi freamwork and library
 - Used router to go to the path that is declared.
 - Used route to declared path for specific components.
 - I have use (useLoaderData()) Hook to get the fetch data that's from API.

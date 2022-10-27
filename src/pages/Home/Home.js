@@ -1,24 +1,24 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa";
-import SingleCourse from '../SingleCourse/SingleCourse';
+import SingleCategory from '../SingleCategory/SingleCategory';
 
 const Home = () => {
-    const allCourses = useLoaderData();
+    const allCategory = useLoaderData();
 
-    const courses = []
-    if (allCourses.length > 6) {
-        courses.push = allCourses.slice(0, 6);
+    const categories = []
+    if (allCategory.length > 6) {
+        categories.push = allCategory.slice(0, 6);
     }
 
     return (
         <div>
-            <h1 className='text-3xl text-info font-semibold mb-9'>All Category base Courses</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+            <h1 className='text-4xl text-center text-blue-700 font-semibold mb-5'>Some Demo of Our Courses</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
-                    courses.push.map(course => <SingleCourse
-                        key={course._id}
-                        course={course}
+                    categories.push.map(category => <SingleCategory
+                        key={category._id}
+                        category={category}
                     />)
                 }
             </div>

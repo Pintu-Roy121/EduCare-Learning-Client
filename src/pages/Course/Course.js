@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { FaRegClock, FaUsers, FaShareAlt, FaRegHeart, FaDownload } from "react-icons/fa";
 import Pdf from "react-to-pdf";
 import { createRef } from 'react';
+import Swal from 'sweetalert2'
 
 const Course = () => {
     const ref = createRef();
@@ -10,8 +11,16 @@ const Course = () => {
     const course = useLoaderData();
     const { title, image_url, details, duration, total_student, teacher, price } = course;
 
+    const handleWelcome = () => {
+        Swal.fire(
+            'Welcome',
+            'You are the new Member of this course',
+            'success'
+        )
+    }
+
     return (
-        <div ref={ref} className="card w-3/5 text-center mx-auto bg-base-100 shadow-xl mt-10">
+        <div ref={ref} className="card w-3/5 text-center mx-auto bg-base-100 shadow-lg shadow-blue-500/50 mt-10">
             <div className='h-16 bg-slate-100 flex items-center justify-between px-6'>
                 <div className='flex item-center'>
                     <img className='h-11 w-11 rounded-full mr-3' src={teacher.img} alt="" />
@@ -36,6 +45,7 @@ const Course = () => {
             <h2 className='text-2xl m-8 font-semibold text-left'>Price: {price} $</h2>
             <div className='h-16 bg-slate-100 flex justify-between items-center px-9'>
                 <p className='text-xl flex items-center gap-3 font-semibold'><FaRegClock />{duration} Hrs</p>
+                <button onClick={handleWelcome} className='btn-success btn-outline border px-4 rounded font-semibold'>Done</button>
                 <p className='text-xl flex items-center gap-3 font-semibold'>Users: <FaUsers className='text-2xl' />{total_student} </p>
 
             </div>
