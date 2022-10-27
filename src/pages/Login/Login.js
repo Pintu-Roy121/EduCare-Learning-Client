@@ -9,7 +9,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useState } from 'react';
 
 const Login = () => {
-    const { providerLogin, handleSignInwithEmail, resetPasswore } = useContext(AuthContext);
+    const { user, providerLogin, handleSignInwithEmail, resetPasswore } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
     const [error, setError] = useState('');
@@ -73,6 +73,7 @@ const Login = () => {
     const handleEmail = (event) => {
         const email = event.target.value;
         setUserEmail(email)
+
     }
 
     // send Reset password.................
@@ -82,8 +83,14 @@ const Login = () => {
             toast.error('Please Provide a Email');
         }
         else {
-            resetPasswore(userEmail);
-            toast.success('Varification Email Sent');
+            resetPasswore(userEmail)
+                .then(result => {
+                    toast.success('Varification Email Sent');
+                    setError('');
+                })
+                .catch(error => {
+                    setError(error.message);
+                })
         }
     }
 
