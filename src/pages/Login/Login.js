@@ -9,13 +9,17 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useState } from 'react';
 
 const Login = () => {
-    const { providerLogin, handleSignInwithEmail } = useContext(AuthContext);
+    const { providerLogin, handleSignInwithEmail, resetPasswore } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
     const [error, setError] = useState('');
+    const [userEmail, setUserEmail] = useState()
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+
+
+    // Sign is with Google Login..............................
 
     const handleGoogleLogin = () => {
         providerLogin(googleProvider)
@@ -30,6 +34,9 @@ const Login = () => {
             })
     }
 
+    //Sign in with Git Hub System ............................ 
+
+
     const handleGitHubLogIn = () => {
         providerLogin(gitHubProvider)
             .then(result => {
@@ -41,6 +48,8 @@ const Login = () => {
                 setError(error.message);
             })
     }
+
+    //  Signin With Email and Password.............................
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -61,6 +70,22 @@ const Login = () => {
             })
     }
 
+    const handleEmail = (event) => {
+        const email = event.target.value;
+        setUserEmail(email)
+    }
+
+    // send Reset password.................
+    const handleResetPassword = () => {
+
+        if (!userEmail) {
+            toast.error('Please Provide a Email');
+        }
+        else {
+            resetPasswore(userEmail);
+            toast.success('Varification Email Send');
+        }
+    }
 
 
     return (
@@ -72,22 +97,24 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit} className="card-body">
-                            <div className="form-control">
+                            <div onBlur={handleEmail} className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl font-semibold">Email</span>
                                 </label>
-                                <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                                <input type="email" name='email' placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl font-semibold">Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered mb-3" />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered mb-3" />
 
                                 <p className='text-red-700 font-semibold'>{error}</p>
 
-                                <label className="mt-5 flex flex-col text-left">
-                                    <Link to="/register" className="label-text-alt text-blue-900 underline text-base font-medium link link-hover">Don not Have an Account? <span className='text-sm'>Register Here</span></Link>
+                                <label className="my-5 flex justify-between items-center">
+                                    <Link to="/register" className="label-text-alt text-blue-900 underline text-base font-medium link link-hover">Don not Have an Account? Register
+                                    </Link>
+                                    <div onClick={handleResetPassword} className="label-text-alt text-blue-900 underline text-base font-medium link link-hover">Forget Password</div>
                                 </label>
                             </div>
                             <button className="btn btn-primary">Login</button>

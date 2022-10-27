@@ -20,7 +20,7 @@ const Categories = () => {
                 {
                     categories.map(category =>
                         <p key={category.id} >
-                            <Link to={`/category/${category.id}`} className='text-xl'><button className='btn btn-outline btn-success w-full lg:w-64 mb-6 shadow-inner shadow-blue-500/50'>{category.name}</button></Link>
+                            <Link to={`/category/${category.id}`} className='text-xl'><button className='btn btn-outline btn-success w-full lg:w-64 mb-6 shadow-lg shadow-success-500/50'>{category.name}</button></Link>
                         </p>
                     )
                 }

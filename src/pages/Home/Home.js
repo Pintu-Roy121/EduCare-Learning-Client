@@ -13,7 +13,7 @@ const Home = () => {
 
     return (
         <div>
-            <h1 className='text-4xl text-center text-blue-700 font-semibold mb-5'>Some Demo of Our Courses</h1>
+            <h1 className='text-3xl font-bold text-blue-900 text-center mb-7'>Total Course of All category: {allCategory.length}</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     categories.push.map(category => <SingleCategory
